@@ -45,6 +45,25 @@ For support on using the API's or development issues, please refer to the offici
 
 | API                     | DESCRIPTION |
 | :----                   | :---- |
+| getAccountBalance       | https://docs.kraken.com/api/docs/rest-api/get-account-balance  |
+| getExtendedBalance      | https://docs.kraken.com/api/docs/rest-api/get-extended-balance |
+| getTradeBalance         | https://docs.kraken.com/api/docs/rest-api/get-trade-balance    |
+| getOpenOrders           | https://docs.kraken.com/api/docs/rest-api/get-open-orders      |
+| getClosedOrders         | https://docs.kraken.com/api/docs/rest-api/get-closed-orders    |
+| queryOrdersInfo         | https://docs.kraken.com/api/docs/rest-api/get-orders-info      |
+| getOrderAmends          | https://docs.kraken.com/api/docs/rest-api/get-order-amends     |
+| getTradesHistory        | https://docs.kraken.com/api/docs/rest-api/get-trade-history    |
+| queryTradesInfo         | https://docs.kraken.com/api/docs/rest-api/get-trades-info      |
+| getOpenPositions        | https://docs.kraken.com/api/docs/rest-api/get-open-positions   |
+| getLedgersInfo          | https://docs.kraken.com/api/docs/rest-api/get-ledgers          |
+| queryLedgers            | https://docs.kraken.com/api/docs/rest-api/get-ledgers-info     |
+| getTradeVolume          | https://docs.kraken.com/api/docs/rest-api/get-trade-volume     |
+| requestExportReport     | Not implemented                                                |
+| getExportReportStatus   | Not implemented                                                |
+| retrieveDataExport      | Not implemented                                                |
+| deleteExportReport      | Not implemented                                                |
+
+### Trading
 
 ## __WEBSOCKET API__
 
