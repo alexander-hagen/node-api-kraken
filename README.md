@@ -65,6 +65,24 @@ For support on using the API's or development issues, please refer to the offici
 
 ### Trading
 
+| API                     | DESCRIPTION |
+| :----                   | :---- |
+| addOrder                | https://docs.kraken.com/api/docs/rest-api/add-order               |
+| addOrderBatch           | https://docs.kraken.com/api/docs/rest-api/add-order-batch         |
+| amendOrder              | https://docs.kraken.com/api/docs/rest-api/amend-order             |
+| editOrder               | https://docs.kraken.com/api/docs/rest-api/edit-order              |
+| cancelOrder             | https://docs.kraken.com/api/docs/rest-api/cancel-order            |
+| cancelAllOrders         | https://docs.kraken.com/api/docs/rest-api/cancel-all-orders       |
+| cancelAllOrdersAfter    | https://docs.kraken.com/api/docs/rest-api/cancel-all-orders-after |
+                                               
+### OTC
+
+### Funding
+
+## Subaccounts
+
+## Earn
+
 ## __WEBSOCKET API__
 
 ```javascript

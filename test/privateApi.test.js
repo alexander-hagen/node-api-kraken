@@ -8,33 +8,36 @@ const
   privateAPI=new kraken.privateApi({ "apikey": apikey, "secret": secret });
   timeout=privateAPI.timeout;
 
-//const
-//  symbol="BTC_USDT",
-//  quote="USDT",
-//  base="BTC",
+const
+  symbol="XBTUSDC",
+  quote="USDC",
+  base="XXBT";
 //  limit=5,
 //  depth=5;
 
 // Normal requests
 
-describe('Authentication', () => {
-
-  test('Test sign() function', async () => {
-    const path="/0/private/AddOrder";
-    const payload={
-      "nonce": "1616492376594", 
-      "ordertype": "limit", 
-      "pair": "XBTUSD",
-      "price": 37500, 
-      "type": "buy",
-      "volume": 1.25
-    };
-    const secret="kQH5HW/8p1uGOVjbgWA7FunAmGO8lsSUXNsu3eow76sz84Q18fWxnyRzBHCd3pd5nE9qa99HAZtuZuj6F1huXg==";
-    const result=await privateAPI.sign(path,payload,secret);
-    expect(result).toBe("4/dpxb3iT4tp/ZCVEwSnEsLxx0bqyhLpdfOpc6fn7OR8+UClSV5n9E6aSS8MPtnRfp32bAb0nmbRn6H8ndwLUQ==");
-  }, timeout);
-
-});
+//
+// Only validates with Content-Type xxx-www-urlencoded 
+//
+//describe('Authentication', () => {
+//
+//  test('Test sign() function', async () => {
+//    const path="/0/private/AddOrder";
+//    const payload={
+//      "nonce": "1616492376594", 
+//      "ordertype": "limit", 
+//      "pair": "XBTUSD",
+//      "price": 37500, 
+//      "type": "buy",
+//      "volume": 1.25
+//    };
+//    const secret="kQH5HW/8p1uGOVjbgWA7FunAmGO8lsSUXNsu3eow76sz84Q18fWxnyRzBHCd3pd5nE9qa99HAZtuZuj6F1huXg==";
+//    const result=await privateAPI.sign(path,payload,secret);
+//    expect(result).toBe("4/dpxb3iT4tp/ZCVEwSnEsLxx0bqyhLpdfOpc6fn7OR8+UClSV5n9E6aSS8MPtnRfp32bAb0nmbRn6H8ndwLUQ==");
+//  }, timeout);
+//
+//});
 
 describe('Accounts', () => {
 
@@ -117,18 +120,84 @@ describe('Accounts', () => {
 
 describe('Trading', () => {
 
-//  test('Test addOrder() function', async () => {
-//    const options= {
-//      nonce: '1616492376594',
-//      ordertype: 'limit',
-//      pair: 'XBTUSD',
-//      price: 37500,
-//      type: 'buy',
-//      volume: 1.25,
-//    };
-//    const result=await privateAPI.addOrder(options);
-//    expect(result).toBe(true);
-//  }, timeout);
+  let orderid;
+
+  test('Test addOrder() function', async () => {
+    const options= {
+      ordertype: 'limit',
+      pair: symbol,
+      price: 1000000,
+      type: 'sell',
+      volume: 0.00005 };
+    const output=await privateAPI.addOrder(options);
+    order=output.result;
+    expect(output.result).toHaveProperty("txid");
+  }, timeout);
+
+  test('Test amendOrder() function', async () => {
+    const options= {
+      txid: order.txid[0],
+      limit_price: 1001000 };
+    const output=await privateAPI.amendOrder(options);
+    expect(output.result).toHaveProperty("amend_id");
+  }, timeout);
+
+  test('Test editOrder() function', async () => {
+    const options= {
+      pair: symbol,
+      txid: order.txid[0],
+      price: 1002000 };
+    const output=await privateAPI.editOrder(options);
+    order=output.result;
+    expect(output.result).toHaveProperty("originaltxid");
+  }, timeout);
+
+  test('Test cancelOrder() function', async () => {
+    const options= { txid: order.txid };
+    const output=await privateAPI.cancelOrder(options);
+    expect(output.result).toHaveProperty("count");
+  }, timeout);
+
+  test('Test cancelAllOrders() function', async () => {
+    const output=await privateAPI.cancelAllOrders();
+    expect(output.result).toHaveProperty("count");
+  }, timeout);
+
+  test('Test addOrderBatch() function', async () => {
+    const options= {
+      pair: symbol,
+      orders: [{
+        ordertype: 'limit',
+        price: 1000000,
+        type: 'sell',
+        volume: 0.00005
+      },{
+        ordertype: 'limit',
+        price: 1000000,
+        type: 'sell',
+        volume: 0.00005
+      }]
+    };
+    const output=await privateAPI.addOrderBatch(options);
+    order=output.result.orders;
+    expect(output.result).toHaveProperty("orders");
+  }, timeout);
+
+  test('Test cancelOrderBatch() function', async () => {
+    const options= { orders: [ order[0].txid, order[1].txid ] };
+    const output=await privateAPI.cancelOrderBatch(options);
+    expect(output.result).toHaveProperty("count");
+  }, timeout);
+
+  test('Test cancelAllOrdersAfter() function', async () => {
+    const output=await privateAPI.cancelAllOrdersAfter({timeout: 30});
+    expect(output.result).toHaveProperty("triggerTime");
+  }, timeout);
+
+  test('Test getWebSocketsToken() function', async () => {
+    const output=await privateAPI.getWebSocketsToken();
+    expect(output.result).toHaveProperty("token");
+  }, timeout);
 
 });
 
