@@ -74,14 +74,24 @@ For support on using the API's or development issues, please refer to the offici
 | cancelOrder             | https://docs.kraken.com/api/docs/rest-api/cancel-order            |
 | cancelAllOrders         | https://docs.kraken.com/api/docs/rest-api/cancel-all-orders       |
 | cancelAllOrdersAfter    | https://docs.kraken.com/api/docs/rest-api/cancel-all-orders-after |
-                                               
+| cancelOrderBatch        | https://docs.kraken.com/api/docs/rest-api/cancel-order-batch      |
+| getWebSocketToken       | https://docs.kraken.com/api/docs/rest-api/get-websockets-token    |
+
 ### OTC
+
+Not implemented. Report a feature request to have it added.
 
 ### Funding
 
+Not implemented. Report a feature request to have it added.
+
 ## Subaccounts
 
+Not implemented. Report a feature request to have it added.
+
 ## Earn
+
+Not implemented. Report a feature request to have it added.
 
 ## __WEBSOCKET API__
 
@@ -126,14 +136,41 @@ For support on using the API's or development issues, please refer to the offici
 
 ```
 
-### Public API
+Only Websocket API v2 has been implemented as Websocket API v1 has been deprecated.
 
-| API                                             | HANDLER                   | DESCRIPTION |
-| :----                                           | :----                     | :---- |
-| subscribeCandles unsubscribeCandles             | currencies.snapshot       | |
+### User Trading
 
-### Private API
+| API                  | DESCRIPTION |
+| :----                | :---- |
+| addOrder             | https://docs.kraken.com/api/docs/websocket-v2/add_order    |
+| amendOrder           | https://docs.kraken.com/api/docs/websocket-v2/amend_order  |
+| editOrder            | https://docs.kraken.com/api/docs/websocket-v2/edit_order   |
+| cancelOrder          | https://docs.kraken.com/api/docs/websocket-v2/cancel_order |
+| cancelAllOrders      | https://docs.kraken.com/api/docs/websocket-v2/cancel_all   |
+| cancelAllOrdersAfter | https://docs.kraken.com/api/docs/websocket-v2/cancel_after |
+| addOrderBatch        | https://docs.kraken.com/api/docs/websocket-v2/batch_add    |
+| cancelOrderBatch     | https://docs.kraken.com/api/docs/websocket-v2/batch_cancel |
 
-| API                                             | HANDLER                   | DESCRIPTION |
-| :----                                           | :----                     | :---- |
-| subscribeOrders unsubscribeOrders               | orders                    | |
+### User Data
+
+| API                                             | HANDLER | DESCRIPTION |
+| :----                                           | :----   | :---- |
+| subscribeExecutions unsubscribeExecutions       | executions.snapshot executions.update | https://docs.kraken.com/api/docs/websocket-v2/executions |
+| subscribeBalances unsubscribeBalances           | balances.snapshot balances.update     | https://docs.kraken.com/api/docs/websocket-v2/balances   |
+ 
+### Market Data
+
+| API                                             | HANDLER | DESCRIPTION |
+| :----                                           | :----   | :---- |
+| subscribeTicker unsubscribeTicker               | ticker.snapshot ticker.update         | https://docs.kraken.com/api/docs/websocket-v2/ticker     |
+| subscribeBook unsubscribeBook                   | book.snapshot book.update             | https://docs.kraken.com/api/docs/websocket-v2/book       |
+| subscribeOrders unsubscribeOrders               | level3.snapshot level3.update         | https://docs.kraken.com/api/docs/websocket-v2/level3     |
+| subscribeCandles unsubscribeCandles             | ohlc.snapshot ohlc.update             | https://docs.kraken.com/api/docs/websocket-v2/ohlc       |
+| subscribeTrades unsubscribeTrades               | trade.snapshot trade.update           | https://docs.kraken.com/api/docs/websocket-v2/trade      |
+| subscribeInstrumenrs unsubscribeInstruments     | instrument.snapshot instrument.update | https://docs.kraken.com/api/docs/websocket-v2/instrument |
+
+### Admin
+
+| API                  | DESCRIPTION |
+| :----                | :---- |
+| ping                 | https://docs.kraken.com/api/docs/websocket-v2/ping         |

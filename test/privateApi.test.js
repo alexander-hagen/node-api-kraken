@@ -42,77 +42,77 @@ const
 describe('Accounts', () => {
 
   test('Test getAccountBalance() function', async () => {
-    const output=await privateAPI.getAccountBalance();
-    expect(output.result && typeof output.result === 'object').toBe(true);
+    const result=await privateAPI.getAccountBalance();
+    expect(result && typeof result === 'object').toBe(true);
   }, timeout);
 
   test('Test getExtendedBalance() function', async () => {
-    const output=await privateAPI.getExtendedBalance();
-    expect(output.result && typeof output.result === 'object').toBe(true);
+    const result=await privateAPI.getExtendedBalance();
+    expect(result && typeof result === 'object').toBe(true);
   }, timeout);
 
   test('Test getTradeBalance() function', async () => {
-    const output=await privateAPI.getTradeBalance();
-    expect(output.result && typeof output.result === 'object').toBe(true);
+    const result=await privateAPI.getTradeBalance();
+    expect(result && typeof result === 'object').toBe(true);
   }, timeout);
 
   test('Test getOpenOrders() function', async () => {
-    const output=await privateAPI.getOpenOrders();
-    expect(output.result).toHaveProperty("open");
+    const result=await privateAPI.getOpenOrders();
+    expect(result).toHaveProperty("open");
   }, timeout);
 
   let order;
 
   test('Test getClosedOrders() function', async () => {
-    const output=await privateAPI.getClosedOrders();
-    order=Object.keys(output.result.closed)[0];
-    expect(output.result).toHaveProperty("closed");
+    const result=await privateAPI.getClosedOrders();
+    order=Object.keys(result.closed)[0];
+    expect(result).toHaveProperty("closed");
   }, timeout);
 
   test('Test queryOrdersInfo() function', async () => {
-    const output=await privateAPI.queryOrdersInfo({"txid": order});
-    expect(output.result).toHaveProperty(order);
+    const result=await privateAPI.queryOrdersInfo({"txid": order});
+    expect(result).toHaveProperty(order);
   }, timeout);
 
   test('Test getOrderAmends() function', async () => {
-    const output=await privateAPI.getOrderAmends({"order_id": order});
-    expect(output.result).toHaveProperty("amends");
+    const result=await privateAPI.getOrderAmends({"order_id": order});
+    expect(result).toHaveProperty("amends");
   }, timeout);
 
   let trade;
 
   test('Test getTradesHistory() function', async () => {
-    const output=await privateAPI.getTradesHistory({"type": "all", "trades": false, "consolidate_taker": true});
-    trade=Object.keys(output.result.trades)[0];
-    expect(output.result).toHaveProperty("trades");
+    const result=await privateAPI.getTradesHistory({"type": "all", "trades": false, "consolidate_taker": true});
+    trade=Object.keys(result.trades)[0];
+    expect(result).toHaveProperty("trades");
   }, timeout);
 
   test('Test queryTradesInfo() function', async () => {
-    const output=await privateAPI.queryTradesInfo({"txid": trade});
-    expect(output.result).toHaveProperty(trade);
+    const result=await privateAPI.queryTradesInfo({"txid": trade});
+    expect(result).toHaveProperty(trade);
   }, timeout);
 
   test('Test getOpenPositions() function', async () => {
-    const output=await privateAPI.getOpenPositions();
-    expect(output.result && typeof output.result === 'object').toBe(true);
+    const result=await privateAPI.getOpenPositions();
+    expect(result && typeof result === 'object').toBe(true);
   }, timeout);
 
   let ledger;
 
   test('Test getLedgersInfo() function', async () => {
-    const output=await privateAPI.getLedgersInfo();
-    ledger=Object.keys(output.result.ledger)[0];
-    expect(output.result).toHaveProperty("ledger");
+    const result=await privateAPI.getLedgersInfo();
+    ledger=Object.keys(result.ledger)[0];
+    expect(result).toHaveProperty("ledger");
   }, timeout);
 
   test('Test queryLedgers() function', async () => {
-    const output=await privateAPI.queryLedgers({"id": ledger});
-    expect(output.result).toHaveProperty(ledger);
+    const result=await privateAPI.queryLedgers({"id": ledger});
+    expect(result).toHaveProperty(ledger);
   }, timeout);
 
   test('Test getTradeVolume() function', async () => {
-    const output=await privateAPI.getTradeVolume();
-    expect(output.result).toHaveProperty("volume");
+    const result=await privateAPI.getTradeVolume();
+    expect(result).toHaveProperty("volume");
   }, timeout);
 
 
@@ -129,17 +129,17 @@ describe('Trading', () => {
       price: 1000000,
       type: 'sell',
       volume: 0.00005 };
-    const output=await privateAPI.addOrder(options);
-    order=output.result;
-    expect(output.result).toHaveProperty("txid");
+    const result=await privateAPI.addOrder(options);
+    order=result;
+    expect(result).toHaveProperty("txid");
   }, timeout);
 
   test('Test amendOrder() function', async () => {
     const options= {
       txid: order.txid[0],
       limit_price: 1001000 };
-    const output=await privateAPI.amendOrder(options);
-    expect(output.result).toHaveProperty("amend_id");
+    const result=await privateAPI.amendOrder(options);
+    expect(result).toHaveProperty("amend_id");
   }, timeout);
 
   test('Test editOrder() function', async () => {
@@ -147,20 +147,20 @@ describe('Trading', () => {
       pair: symbol,
       txid: order.txid[0],
       price: 1002000 };
-    const output=await privateAPI.editOrder(options);
-    order=output.result;
-    expect(output.result).toHaveProperty("originaltxid");
+    const result=await privateAPI.editOrder(options);
+    order=result;
+    expect(result).toHaveProperty("originaltxid");
   }, timeout);
 
   test('Test cancelOrder() function', async () => {
     const options= { txid: order.txid };
-    const output=await privateAPI.cancelOrder(options);
-    expect(output.result).toHaveProperty("count");
+    const result=await privateAPI.cancelOrder(options);
+    expect(result).toHaveProperty("count");
   }, timeout);
 
   test('Test cancelAllOrders() function', async () => {
-    const output=await privateAPI.cancelAllOrders();
-    expect(output.result).toHaveProperty("count");
+    const result=await privateAPI.cancelAllOrders();
+    expect(result).toHaveProperty("count");
   }, timeout);
 
   test('Test addOrderBatch() function', async () => {
@@ -178,25 +178,25 @@ describe('Trading', () => {
         volume: 0.00005
       }]
     };
-    const output=await privateAPI.addOrderBatch(options);
-    order=output.result.orders;
-    expect(output.result).toHaveProperty("orders");
+    const result=await privateAPI.addOrderBatch(options);
+    order=result.orders;
+    expect(result).toHaveProperty("orders");
   }, timeout);
 
   test('Test cancelOrderBatch() function', async () => {
     const options= { orders: [ order[0].txid, order[1].txid ] };
-    const output=await privateAPI.cancelOrderBatch(options);
-    expect(output.result).toHaveProperty("count");
+    const result=await privateAPI.cancelOrderBatch(options);
+    expect(result).toHaveProperty("count");
   }, timeout);
 
   test('Test cancelAllOrdersAfter() function', async () => {
-    const output=await privateAPI.cancelAllOrdersAfter({timeout: 30});
-    expect(output.result).toHaveProperty("triggerTime");
+    const result=await privateAPI.cancelAllOrdersAfter({timeout: 30});
+    expect(result).toHaveProperty("triggerTime");
   }, timeout);
 
   test('Test getWebSocketsToken() function', async () => {
-    const output=await privateAPI.getWebSocketsToken();
-    expect(output.result).toHaveProperty("token");
+    const result=await privateAPI.getWebSocketsToken();
+    expect(result).toHaveProperty("token");
   }, timeout);
 
 });
