@@ -1,6 +1,6 @@
 {
   "name": "node-api-kraken",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "Non-official implementation of Kraken's API's",
   "main": "index.js",
   "scripts": {
