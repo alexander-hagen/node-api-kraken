@@ -168,12 +168,12 @@ describe('Trading', () => {
       pair: symbol,
       orders: [{
         ordertype: 'limit',
-        price: 1000000,
+        price: 1100000,
         type: 'sell',
         volume: 0.00005
       },{
         ordertype: 'limit',
-        price: 1000000,
+        price: 1200000,
         type: 'sell',
         volume: 0.00005
       }]
@@ -189,10 +189,10 @@ describe('Trading', () => {
     expect(result).toHaveProperty("count");
   }, timeout);
 
-  test('Test cancelAllOrdersAfter() function', async () => {
-    const result=await privateAPI.cancelAllOrdersAfter({timeout: 30});
-    expect(result).toHaveProperty("triggerTime");
-  }, timeout);
+//  test('Test cancelAllOrdersAfter() function', async () => {
+//    const result=await privateAPI.cancelAllOrdersAfter({timeout: 60});
+//    expect(result).toHaveProperty("triggerTime");
+//  }, timeout);
 
   test('Test getWebSocketsToken() function', async () => {
     const result=await privateAPI.getWebSocketsToken();

@@ -43,55 +43,55 @@ For support on using the API's or development issues, please refer to the offici
 
 ### Accounts
 
-| API                     | DESCRIPTION |
-| :----                   | :---- |
-| getAccountBalance       | https://docs.kraken.com/api/docs/rest-api/get-account-balance  |
-| getExtendedBalance      | https://docs.kraken.com/api/docs/rest-api/get-extended-balance |
-| getTradeBalance         | https://docs.kraken.com/api/docs/rest-api/get-trade-balance    |
-| getOpenOrders           | https://docs.kraken.com/api/docs/rest-api/get-open-orders      |
-| getClosedOrders         | https://docs.kraken.com/api/docs/rest-api/get-closed-orders    |
-| queryOrdersInfo         | https://docs.kraken.com/api/docs/rest-api/get-orders-info      |
-| getOrderAmends          | https://docs.kraken.com/api/docs/rest-api/get-order-amends     |
-| getTradesHistory        | https://docs.kraken.com/api/docs/rest-api/get-trade-history    |
-| queryTradesInfo         | https://docs.kraken.com/api/docs/rest-api/get-trades-info      |
-| getOpenPositions        | https://docs.kraken.com/api/docs/rest-api/get-open-positions   |
-| getLedgersInfo          | https://docs.kraken.com/api/docs/rest-api/get-ledgers          |
-| queryLedgers            | https://docs.kraken.com/api/docs/rest-api/get-ledgers-info     |
-| getTradeVolume          | https://docs.kraken.com/api/docs/rest-api/get-trade-volume     |
-| requestExportReport     | Not implemented                                                |
-| getExportReportStatus   | Not implemented                                                |
-| retrieveDataExport      | Not implemented                                                |
-| deleteExportReport      | Not implemented                                                |
+| API                   | DESCRIPTION |
+| :----                 | :---- |
+| getAccountBalance     | https://docs.kraken.com/api/docs/rest-api/get-account-balance  |
+| getExtendedBalance    | https://docs.kraken.com/api/docs/rest-api/get-extended-balance |
+| getTradeBalance       | https://docs.kraken.com/api/docs/rest-api/get-trade-balance    |
+| getOpenOrders         | https://docs.kraken.com/api/docs/rest-api/get-open-orders      |
+| getClosedOrders       | https://docs.kraken.com/api/docs/rest-api/get-closed-orders    |
+| queryOrdersInfo       | https://docs.kraken.com/api/docs/rest-api/get-orders-info      |
+| getOrderAmends        | https://docs.kraken.com/api/docs/rest-api/get-order-amends     |
+| getTradesHistory      | https://docs.kraken.com/api/docs/rest-api/get-trade-history    |
+| queryTradesInfo       | https://docs.kraken.com/api/docs/rest-api/get-trades-info      |
+| getOpenPositions      | https://docs.kraken.com/api/docs/rest-api/get-open-positions   |
+| getLedgersInfo        | https://docs.kraken.com/api/docs/rest-api/get-ledgers          |
+| queryLedgers          | https://docs.kraken.com/api/docs/rest-api/get-ledgers-info     |
+| getTradeVolume        | https://docs.kraken.com/api/docs/rest-api/get-trade-volume     |
+| requestExportReport   | Not implemented                                                |
+| getExportReportStatus | Not implemented                                                |
+| retrieveDataExport    | Not implemented                                                |
+| deleteExportReport    | Not implemented                                                |
 
 ### Trading
 
-| API                     | DESCRIPTION |
-| :----                   | :---- |
-| addOrder                | https://docs.kraken.com/api/docs/rest-api/add-order               |
-| addOrderBatch           | https://docs.kraken.com/api/docs/rest-api/add-order-batch         |
-| amendOrder              | https://docs.kraken.com/api/docs/rest-api/amend-order             |
-| editOrder               | https://docs.kraken.com/api/docs/rest-api/edit-order              |
-| cancelOrder             | https://docs.kraken.com/api/docs/rest-api/cancel-order            |
-| cancelAllOrders         | https://docs.kraken.com/api/docs/rest-api/cancel-all-orders       |
-| cancelAllOrdersAfter    | https://docs.kraken.com/api/docs/rest-api/cancel-all-orders-after |
-| cancelOrderBatch        | https://docs.kraken.com/api/docs/rest-api/cancel-order-batch      |
-| getWebSocketToken       | https://docs.kraken.com/api/docs/rest-api/get-websockets-token    |
+| API                   | DESCRIPTION |
+| :----                 | :---- |
+| addOrder              | https://docs.kraken.com/api/docs/rest-api/add-order               |
+| addOrderBatch         | https://docs.kraken.com/api/docs/rest-api/add-order-batch         |
+| amendOrder            | https://docs.kraken.com/api/docs/rest-api/amend-order             |
+| editOrder             | https://docs.kraken.com/api/docs/rest-api/edit-order              |
+| cancelOrder           | https://docs.kraken.com/api/docs/rest-api/cancel-order            |
+| cancelAllOrders       | https://docs.kraken.com/api/docs/rest-api/cancel-all-orders       |
+| cancelAllOrdersAfter  | https://docs.kraken.com/api/docs/rest-api/cancel-all-orders-after |
+| cancelOrderBatch      | https://docs.kraken.com/api/docs/rest-api/cancel-order-batch      |
+| getWebSocketToken     | https://docs.kraken.com/api/docs/rest-api/get-websockets-token    |
 
 ### OTC
 
-Not implemented. Report a feature request to have it added.
+Not implemented. Report a feature request or create a pull request to have it added.
 
 ### Funding
 
-Not implemented. Report a feature request to have it added.
+Not implemented. Report a feature request or create a pull request to have it added.
 
 ## Subaccounts
 
-Not implemented. Report a feature request to have it added.
+Not implemented. Report a feature request or create a pull request to have it added.
 
 ## Earn
 
-Not implemented. Report a feature request to have it added.
+Not implemented. Report a feature request or create a pull request to have it added.
 
 ## __WEBSOCKET API__
 
@@ -136,7 +136,7 @@ Not implemented. Report a feature request to have it added.
 
 ```
 
-Only Websocket API v2 has been implemented as Websocket API v1 has been deprecated.
+Only Websocket API v2 has been implemented. Report a feature request or create a pull request to have Webdocket API v1 added.
 
 ### User Trading
 
@@ -153,21 +153,21 @@ Only Websocket API v2 has been implemented as Websocket API v1 has been deprecat
 
 ### User Data
 
-| API                                             | HANDLER | DESCRIPTION |
-| :----                                           | :----   | :---- |
-| subscribeExecutions unsubscribeExecutions       | executions.snapshot executions.update | https://docs.kraken.com/api/docs/websocket-v2/executions |
-| subscribeBalances unsubscribeBalances           | balances.snapshot balances.update     | https://docs.kraken.com/api/docs/websocket-v2/balances   |
+| API                                         | HANDLER | DESCRIPTION |
+| :----                                       | :----   | :---- |
+| subscribeExecutions unsubscribeExecutions   | executions.snapshot executions.update | https://docs.kraken.com/api/docs/websocket-v2/executions |
+| subscribeBalances unsubscribeBalances       | balances.snapshot balances.update     | https://docs.kraken.com/api/docs/websocket-v2/balances   |
  
 ### Market Data
 
-| API                                             | HANDLER | DESCRIPTION |
-| :----                                           | :----   | :---- |
-| subscribeTicker unsubscribeTicker               | ticker.snapshot ticker.update         | https://docs.kraken.com/api/docs/websocket-v2/ticker     |
-| subscribeBook unsubscribeBook                   | book.snapshot book.update             | https://docs.kraken.com/api/docs/websocket-v2/book       |
-| subscribeOrders unsubscribeOrders               | level3.snapshot level3.update         | https://docs.kraken.com/api/docs/websocket-v2/level3     |
-| subscribeCandles unsubscribeCandles             | ohlc.snapshot ohlc.update             | https://docs.kraken.com/api/docs/websocket-v2/ohlc       |
-| subscribeTrades unsubscribeTrades               | trade.snapshot trade.update           | https://docs.kraken.com/api/docs/websocket-v2/trade      |
-| subscribeInstrumenrs unsubscribeInstruments     | instrument.snapshot instrument.update | https://docs.kraken.com/api/docs/websocket-v2/instrument |
+| API                                         | HANDLER | DESCRIPTION |
+| :----                                       | :----   | :---- |
+| subscribeTicker unsubscribeTicker           | ticker.snapshot ticker.update         | https://docs.kraken.com/api/docs/websocket-v2/ticker     |
+| subscribeBook unsubscribeBook               | book.snapshot book.update             | https://docs.kraken.com/api/docs/websocket-v2/book       |
+| subscribeOrders unsubscribeOrders           | level3.snapshot level3.update         | https://docs.kraken.com/api/docs/websocket-v2/level3     |
+| subscribeCandles unsubscribeCandles         | ohlc.snapshot ohlc.update             | https://docs.kraken.com/api/docs/websocket-v2/ohlc       |
+| subscribeTrades unsubscribeTrades           | trade.snapshot trade.update           | https://docs.kraken.com/api/docs/websocket-v2/trade      |
+| subscribeInstruments unsubscribeInstruments | instrument.snapshot instrument.update | https://docs.kraken.com/api/docs/websocket-v2/instrument |
 
 ### Admin
 

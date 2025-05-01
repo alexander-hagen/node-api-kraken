@@ -230,6 +230,86 @@ describe('Websocket Private functions', () => {
     console.log("privatews connected");
   });
 
+  describe('Websocket User Trading', () => {
+
+    let order;
+
+    test('Test addOrder() function', async () => {
+      const options= {
+        "order_type": 'limit',
+        "side": 'sell',
+        "order_qty": 0.00005,
+        "symbol": symbol,
+        "limit_price": 1000000 };
+      const result=await privatews.addOrder(options);
+      order=result;
+      expect(result).toHaveProperty("order_id");
+    }, timeout);
+
+    test('Test amendOrder() function', async () => {
+      const options= {
+        "order_id": order.order_id,
+        "order_qty": 0.00005,
+        "limit_price": 1001000 };
+      const result=await privatews.amendOrder(options);
+      expect(result).toHaveProperty("amend_id");
+    }, timeout);
+
+    test('Test editOrder() function', async () => {
+      const options= {
+        "order_id": order.order_id,
+        "symbol": symbol,
+        "order_qty": 0.00005,
+        "limit_price": 1002000 };
+      const result=await privatews.editOrder(options);
+      order=result;
+      expect(result).toHaveProperty("original_order_id");
+    }, timeout);
+
+    test('Test cancelOrder() function', async () => {
+      const options= { "order_id": [ order.order_id ] };
+      const result=await privatews.cancelOrder(options);
+      expect(result).toHaveProperty("order_id");
+    }, timeout);
+
+    test('Test cancelAllOrders() function', async () => {
+      const result=await privatews.cancelAllOrders();
+      expect(result).toHaveProperty("count");
+    }, timeout);
+
+    test('Test addOrderBatch() function', async () => {
+      const options= {
+        "symbol": symbol,
+        "orders": [{
+          "limit_price": 1000000,
+          "order_qty": 0.00005,
+          "order_type": 'limit',
+          "side": 'sell'
+        },{
+          "limit_price": 1000000,
+          "order_qty": 0.00005,
+          "order_type": 'limit',
+          "side": 'sell'
+        }]
+      };
+      const result=await privatews.addOrderBatch(options);
+      order=result;
+      expect(result).toBeInstanceOf(Array);
+    }, timeout);
+
+    test('Test cancelOrderBatch() function', async () => {
+      const options= { "orders": [ order[0].order_id, order[1].order_id ] };
+      const result=await privatews.cancelOrderBatch(options);
+      expect(result).toHaveProperty("count");
+    }, timeout);
+
+    test('Test cancelAllOrdersAfter() function', async () => {
+      const result=await privatews.cancelAllOrdersAfter({timeout: 60});
+      expect(result).toHaveProperty("triggerTime");
+    }, timeout);
+
+  });
+
   describe('Websocket User Data - Executions', () => {
 
     test('Test subscribeExecutions() function', async () => {
@@ -354,11 +434,6 @@ function objectIsJSON(obj) {
   }
 };
 
-function checkError(obj,code,reason) {
-  if(obj.code==code && obj.reason==reason) { return true; }
-  return false;
-};
-
 function waitForConnection(websocket) {
   var socketResolve,socketReject;
   var done=false;
@@ -408,27 +483,3 @@ function waitForPromise(key) {
     }
   });
 };
-
-//        if (_promises.has(key)) {
-//          console.log(key,"rejected",events,_promises);
-//          _promises.delete(key);
-//          reject(key);
-//        };
-//      }, timeout-1000);
-
-//    _promises.set(key, {resolve, reject});
-//    if(events[key]) {
-//      console.log(key,"resolved2",events,_promises);
-//      _promises.delete(key);
-//      resolve(key);
-//    } else {
-//      timers[key]=setTimeout(() => {
-//        if (_promises.has(key)) {
-//          console.log(key,"rejected",events,_promises);
-//          _promises.delete(key);
-//          reject(key);
-//        };
-//      }, timeout-1000);
-//    };
-//  });
-//};
